@@ -13,25 +13,21 @@ import 'services/exchange_service.dart';
 import 'styles.dart';
 
 void main() {
+  InjectionComponent.run();
 
-InjectionComponent.run();
-
- BlocOverrides.runZoned(
-    () => runApp(MultiBlocProvider(
-      providers: [
-        BlocProvider<ExchangeBloc>(
-          create: (context) => ExchangeBloc(
-            exchangeService: InjectionComponent.getDependency<ExchangeService>()
-          )..add(ExchangeInfoInit())
-        ),
-      ], child: ExchangeApp())),
-    blocObserver: SimpleBlocObserver(),
-    eventTransformer: sequential<dynamic>()
-  );
+  BlocOverrides.runZoned(
+      () => runApp(MultiBlocProvider(providers: [
+            BlocProvider<ExchangeBloc>(
+                create: (context) => ExchangeBloc(
+                    exchangeService:
+                        InjectionComponent.getDependency<ExchangeService>())
+                  ..add(ExchangeInfoInit())),
+          ], child: ExchangeApp())),
+      blocObserver: SimpleBlocObserver(),
+      eventTransformer: sequential<dynamic>());
 }
 
 class ExchangeApp extends StatelessWidget {
-
   static const primary = MaterialColor(4283157653, {
     50: Color(0xffebf9f3),
     100: Color(0xffd7f4e8),
@@ -47,7 +43,8 @@ class ExchangeApp extends StatelessWidget {
 
   final _appRouter = Routes();
 
-  
+  ExchangeApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
@@ -55,11 +52,12 @@ class ExchangeApp extends StatelessWidget {
       routeInformationParser: _appRouter.defaultRouteParser(),
       title: AppConfig.appName,
       theme: ThemeData(
-         fontFamily: 'Roboto',
+        fontFamily: 'Roboto',
         scaffoldBackgroundColor: AppStyles.scaffoldColor,
         appBarTheme: AppBarTheme(
           color: AppStyles.scaffoldColor,
-          systemOverlayStyle: const SystemUiOverlayStyle(statusBarBrightness:Brightness.light), 
+          systemOverlayStyle:
+              const SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
           elevation: 0,
           iconTheme: Theme.of(context)
               .primaryIconTheme
@@ -67,11 +65,11 @@ class ExchangeApp extends StatelessWidget {
         ),
         secondaryHeaderColor: Colors.black,
         textTheme: Theme.of(context).textTheme.apply(
-          bodyColor: AppStyles.mainTextColor,
-        ),
+              bodyColor: AppStyles.mainTextColor,
+            ),
         primaryTextTheme: Theme.of(context).primaryTextTheme.apply(
-          bodyColor: AppStyles.mainTextColor,
-        ),
+              bodyColor: AppStyles.mainTextColor,
+            ),
         primaryColor: AppStyles.mainColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),

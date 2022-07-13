@@ -5,17 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:belarus_exchange_app/utils/utils.dart';
 
 class InitialTitle extends StatefulWidget {
+  const InitialTitle({Key? key}) : super(key: key);
 
-@override
+  @override
   State<InitialTitle> createState() => _InitialTitleState();
 }
 
 class _InitialTitleState extends State<InitialTitle> {
-
-
   @override
   void setState(fn) {
-    if(mounted) {
+    if (mounted) {
       super.setState(fn);
     }
   }
@@ -28,14 +27,12 @@ class _InitialTitleState extends State<InitialTitle> {
     );
   }
 
-  String _resetTimeEverySecond (DateTime actualTime) {
+  String _resetTimeEverySecond(DateTime actualTime) {
     Timer? timer;
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
-        setState(() {
+      setState(() {});
+    });
 
-        });
-      });
-    
     return actualTime.toStringFormattedHoursAndSecondsOnly();
   }
 }

@@ -1,0 +1,49 @@
+name: belarus_exchange_app
+description: A new Flutter project.
+
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+
+environment:
+  sdk: ">=2.15.1 <3.0.0"
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  json_annotation: ^4.4.0
+  cupertino_icons: ^1.0.4
+  #For ui and logic
+  intl: ^0.17.0
+  anitex: ^2.0.0
+  responsive_builder: ^0.4.1
+  responsive_ui: ^2.1.0
+  http: ^0.13.0
+  flutter_bloc: ^8.0.0
+  bloc_concurrency: ^0.2.0
+  equatable: ^2.0.3
+  injector: ^2.0.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  retrofit_generator: ^4.0.1
+  build_runner: ^2.1.7
+  json_serializable: ^6.1.4
+  flutter_lints: ^1.0.4
+  auto_route_generator: ^3.2.1
+
+
+
+flutter:
+
+  uses-material-design: true
+
+ 
+  assets:
+    - assets/
+    - assets/icon/
